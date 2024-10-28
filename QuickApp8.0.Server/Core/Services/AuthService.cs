@@ -45,7 +45,7 @@ namespace QuickApp8._0.Server.Core.Services
         {
             ApplicationUser defaultUserOne = new ApplicationUser();
             {
-                defaultUserOne.UserName = "HOD";
+                defaultUserOne.UserName = "Admin";
                 defaultUserOne.FullName = "Inbuilt Admin Account";
                 defaultUserOne.Email = "admin@test.com";
 
