@@ -40,14 +40,14 @@ const GlobalRouter = () => {
                 </Route>
         
                 <Route element={<AuthGuard roles={managerAccessRoles}/>}>
-                    <Route path={PATH_DASHBOARD.usersManagement}  element={<UsersManagementPage sendpath={"student"}/>}/>
-                    <Route path={PATH_DASHBOARD.facultyManagement}  element={<UsersManagementPage sendpath={"faculty"}/>}/>
+                    <Route path={PATH_DASHBOARD.usersManagement}  element={<UsersManagementPage sendpath="student"/>}/>
+                    <Route path={PATH_DASHBOARD.facultyManagement}  element={<UsersManagementPage sendpath="faculty"/>}/>
                     <Route path={PATH_DASHBOARD.manager} element={<ManagerPage/>}/>
                 </Route>
 
                 <Route element={<AuthGuard roles={adminAccessRoles} />}>
-                    <Route path={PATH_DASHBOARD.usersManagement} element={<UsersManagementPage sendpath={"student"} />} />
-                    <Route path={PATH_DASHBOARD.facultyManagement}  element={<UsersManagementPage sendpath={"faculty"}/>}/>
+                    <Route path={PATH_DASHBOARD.usersManagement} element={<UsersManagementPage sendpath="student" />} />
+                    <Route path={PATH_DASHBOARD.facultyManagement}  element={<UsersManagementPage sendpath="faculty"/>}/>
                     <Route path={PATH_DASHBOARD.updateRole} element={<UpdateRolePage />} />
                     <Route path={PATH_DASHBOARD.systemLogs} element={<SystemLogsPage />} />
                     <Route path={PATH_DASHBOARD.admin} element={<AdminPage />} />

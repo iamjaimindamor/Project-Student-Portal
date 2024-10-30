@@ -44,7 +44,7 @@ const UsersManagementPage = (props:any) => {
     setloginuserrole(loginuserdata.role);
 
     getUsersList();
-  },[]);
+  },[props]);
 
   if (loading) {
     return(
