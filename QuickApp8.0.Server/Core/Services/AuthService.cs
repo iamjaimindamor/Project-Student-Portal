@@ -39,6 +39,37 @@ namespace QuickApp8._0.Server.Core.Services
             await _applicationDbContext.Database.MigrateAsync();
             await SeedRoleAsync();
             await SeedDefaultUsersAsync();
+            await SeedDefaultSubjectAndAssignments();
+        }
+
+        public async Task SeedDefaultSubjectAndAssignments()
+        {
+            Subject subject1 = new Subject { SubjectName="System Designs" };
+            Subject subject2 = new Subject { SubjectName="Operating Systems" };
+            Subject subject3 = new Subject { SubjectName="Data Structures & Algorithms" };
+            Subject subject4 = new Subject { SubjectName="Business Ethics And Analysis" };
+            Subject subject5 = new Subject { SubjectName="Professional Ethics" };
+
+            Exam exam1 = new Exam { ExamName="WINTER",ExamYear=2024,ExamStatus=ExamState.ONGOING};
+            Exam exam2 = new Exam { ExamName="SUMMER",ExamYear=2024,ExamStatus=ExamState.ENDED};
+            Exam exam3 = new Exam { ExamName="SUMMER",ExamYear=2025,ExamStatus=ExamState.INITIALIZING};
+            
+
+            if (!await _applicationDbContext.subjects.AnyAsync())
+            {
+                await _applicationDbContext.subjects.AddAsync(subject1);
+                await _applicationDbContext.subjects.AddAsync(subject2);
+                await _applicationDbContext.subjects.AddAsync(subject3);
+                await _applicationDbContext.subjects.AddAsync(subject4);
+                await _applicationDbContext.subjects.AddAsync(subject5);
+            }
+
+            if(!await _applicationDbContext.exams.AnyAsync())
+            {
+                await _applicationDbContext.exams.AddAsync(exam1);
+                await _applicationDbContext.exams.AddAsync(exam2);
+                await _applicationDbContext.exams.AddAsync(exam3);
+            }
         }
 
         public async Task SeedDefaultUsersAsync()
@@ -59,11 +90,27 @@ namespace QuickApp8._0.Server.Core.Services
 
             };
 
+            ApplicationUser defaultUserTwoTwo = new ApplicationUser();
+            {
+                defaultUserTwoTwo.UserName = "Faculty2";
+                defaultUserTwoTwo.FullName = "Inbuilt Faculty Account";
+                defaultUserTwoTwo.Email = "faculty2@test.com";
+
+            };
+
             ApplicationUser defaultUserThree = new ApplicationUser();
             {
                 defaultUserThree.UserName = "Student";
                 defaultUserThree.FullName = "Inbuilt Student Account";
                 defaultUserThree.Email = "student@test.com";
+
+            };
+
+            ApplicationUser defaultUserThreeThree = new ApplicationUser();
+            {
+                defaultUserThreeThree.UserName = "Student2";
+                defaultUserThreeThree.FullName = "Inbuilt Student Account";
+                defaultUserThreeThree.Email = "student2@test.com";
 
             };
 
@@ -74,6 +121,13 @@ namespace QuickApp8._0.Server.Core.Services
                 defaultUserFour.Email = "newuser@test.com";
 
             };
+            ApplicationUser defaultUserFourFour = new ApplicationUser();
+            {
+                defaultUserFourFour.UserName = "NewUser2";
+                defaultUserFourFour.FullName = "Inbuilt Default Account";
+                defaultUserFourFour.Email = "newuser2@test.com";
+
+            };
 
             if (!await _applicationDbContext.Users.AnyAsync())
             {
@@ -81,10 +135,13 @@ namespace QuickApp8._0.Server.Core.Services
                 var defaultAdmin = await CreateUserAsync(defaultUserOne, "Test@123",StaticUserRoles.OWNER);
               
                 var defaultFaculty = await CreateUserAsync(defaultUserTwo, "Test@123", StaticUserRoles.ADMIN);
+                var defaultFaculty2 = await CreateUserAsync(defaultUserTwoTwo, "Test@123", StaticUserRoles.ADMIN);
 
                 var defaultStudent = await CreateUserAsync(defaultUserThree, "Test@123", StaticUserRoles.MANAGER);
+                var defaultStudent2 = await CreateUserAsync(defaultUserThreeThree, "Test@123", StaticUserRoles.MANAGER);
 
                 var defaultUser = await CreateUserAsync(defaultUserFour, "Test@123", StaticUserRoles.USER);
+                var defaultUser2 = await CreateUserAsync(defaultUserFourFour, "Test@123", StaticUserRoles.USER);
 
             }
         }

@@ -43,8 +43,8 @@ const Sidebar = () => {
     if (user) {
       const roles = user.roles;
       setVisibleButtons({
-        studentManagement: roles.includes(RolesEnum.OWNER) || roles.includes(RolesEnum.MANAGER) || roles.includes(RolesEnum.ADMIN), 
-        facultyManagement:roles.includes(RolesEnum.ADMIN) || roles.includes(RolesEnum.OWNER),
+        studentManagement: roles.includes(RolesEnum.OWNER) || roles.includes(RolesEnum.ADMIN), 
+        facultyManagement: roles.includes(RolesEnum.OWNER),
         allLogs: roles.includes(RolesEnum.OWNER) || roles.includes(RolesEnum.ADMIN),
         ownerPage:roles.includes(RolesEnum.OWNER),
         adminPage: roles.includes(RolesEnum.ADMIN) || roles.includes(RolesEnum.OWNER),
@@ -71,7 +71,7 @@ const Sidebar = () => {
           </h1>  
       </div>
   
-      {visibleButtons.studentManagement &&  (
+      {visibleButtons.facultyManagement &&  (
         <Button 
         label='Manage Faculty'
         onClick={() => handleClick(PATH_DASHBOARD.facultyManagement)}
@@ -80,7 +80,7 @@ const Sidebar = () => {
         />
       )}
 
-      {visibleButtons.facultyManagement &&  (
+      {visibleButtons.studentManagement &&  (
         <Button 
          label="Manage Students"
          onClick={() => handleClick(PATH_DASHBOARD.usersManagement)}

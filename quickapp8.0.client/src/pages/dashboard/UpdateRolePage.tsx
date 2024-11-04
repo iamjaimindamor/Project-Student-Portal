@@ -72,7 +72,7 @@ const UpdateRolePage = () => {
       await axiosInstance.post(UPDATE_ROLE_URL, updateData);
       setPostLoading(true);
       if(user?.roles.includes("USER")){
-        toast.success('Request Approved'+ role.charAt(0).toUpperCase()+role.slice(1) +"Assigned");
+        toast.success('Request Approved'+" & "+role.charAt(0).toUpperCase()+role.slice(1).toLowerCase()+" Role "+"Assigned");
       }else{
         toast.success('Role updated Successfully.');
       }

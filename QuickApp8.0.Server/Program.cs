@@ -71,6 +71,7 @@ builder.Services.AddOpenIddict()
 //Dependency Injection
 builder.Services.AddScoped<ILogService, LogService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IExamService, ExamService>();
 
 
 //Add Identity and Configure Identity

@@ -13,6 +13,16 @@ namespace QuickApp8._0.Server.Core.DbContext
         }
         public DbSet<Log> logs { get; set; }
 
+        public DbSet<Subject> subjects { get; set; }
+
+        public DbSet<OptedSubjectByStudents> SubbyStudents { get; set; }
+
+        public DbSet<Exam> exams { get; set; }
+
+        public DbSet<AssignedSubject> assignedSubjects { get; set; }
+
+        public DbSet<GradeHistory> gradeHistory { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
