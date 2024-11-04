@@ -91,7 +91,7 @@ const UsersTableSection = ({usersList}:IProps) => {
                 <div className="flex justify-center items-center">
                     <Button
                      type="button"
-                     label="Update"
+                     label={user.roles.includes("USER")?"Approve Request":"Update"}
                      variant="secondary"
                      onClick={() => navigate(`/dashboard/update-role/${user.userName}`)}
                      disabled={ !isAuthorizedForUpdateRole(loggedInUser!.roles[0],user.roles[0])}
@@ -99,7 +99,7 @@ const UsersTableSection = ({usersList}:IProps) => {
                 </div>
                 <div className="flex justify-center items-center">
                     <Button
-                     label="Delete"
+                     label={user.roles.includes("USER")?"Remove Request":"Delete"}
                      onClick={() => handleDelete(user.id)}
                      type="button"
                      variant="danger"

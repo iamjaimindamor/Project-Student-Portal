@@ -9,26 +9,68 @@ import test from "node:test";
 
 
 
-const UsersManagementPage = (props:any) => {
+const UsersManagementPage = (props: any) => {
   const [users, setUsers] = useState<IAuthUser[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const [loginuserrole,setloginuserrole] = useState<string>('');
+  const [managerole, setManageRole] = useState<string>('');
+  const [loginUserRole , SetLoginUserRole] = useState<string>();
 
   const getUsersList = async () => {
     try {
       setLoading(true);
       const response = await axiosInstance.get<IAuthUser[]>(USERS_LIST_URL);
       console.log(props.sendpath);
-      const {data} = response;
-      if(props.sendpath == "faculty"){
-          const data2 = data.filter(user => user.roles.includes("FACULTY"));
-          console.log(data2); 
-          setUsers(data2);
-      }else{
-         setUsers(data)
+      const { data } = response;
+      if (props.sendpath == "Faculty") {
+        const data2 = data.filter(user => user.roles.includes("FACULTY"));
+        setUsers(data2);
       }
-       
-      console.log(data);
+
+      if (props.sendpath == "Student") {
+        const data3 = data.filter(user => user.roles.includes("STUDENT"));
+        setUsers(data3);
+      }
+
+      if (props.sendpath == "New Request") {
+        const data4 = data.filter(user => user.roles.includes("USER"));
+        if(data4.length == 0){
+          toast('No New Requests!',
+            {
+              icon: '🐳',
+              style: {
+                borderRadius: '10px',
+                background: '#333',
+                color: '#fff',
+              },
+            }
+          );
+        }else{
+          if(props.sendpath == "New Request" && loginUserRole=="HOD" && users.length !== 0){
+            toast('New Request!! \n\n Approve And Assign The Access To New User.',
+              {
+                icon: '👏',
+                style: {
+                  borderRadius: '10px',
+                  background: '#333',
+                  color: '#fff',
+                },
+              }
+            );
+          }else if(props.sendpath == "New Request"&& loginUserRole=="FACULTY" && users.length !== 0){
+            toast('New Student Request!!! \n\n Approve And Assign The Access To New Student.',
+              {
+                icon: '👏',
+                style: {
+                  borderRadius: '10px',
+                  background: '#333',
+                  color: '#fff',
+                },
+              }
+            );
+          }
+        }
+        setUsers(data4);
+      }
       setLoading(false);
     } catch (error) {
       toast.error('An Error occurred. Please Contact admins');
@@ -36,18 +78,16 @@ const UsersManagementPage = (props:any) => {
     }
   };
 
-  useEffect(() =>{
-    const loginuserdatastring:any =  localStorage.getItem('user');
+  useEffect(() => {
+    const loginuserdatastring: any = localStorage.getItem('user');
     const loginuserdata = JSON.parse(loginuserdatastring);
-
-    console.log(loginuserdata.role);
-    setloginuserrole(loginuserdata.role);
-
+    SetLoginUserRole(loginuserdata.role);
+    setManageRole(props.sendpath);
     getUsersList();
-  },[props]);
+  }, [props]);
 
   if (loading) {
-    return(
+    return (
       <div className="w-full">
         <AuthSpinner />
       </div>
@@ -55,11 +95,11 @@ const UsersManagementPage = (props:any) => {
   }
   return (
     <div className="pageTemplate2">
-      <h1 className='text-2xl font-bold'>Student Management</h1>
+      <h1 className='text-2xl font-bold'>{managerole} Management</h1>
       {/*<div className="grid grid-cols-1">*/}
       {/*  <UserChartSection usersList={users}/>*/}
-      {/*</div>*/} 
-   <UsersTableSection usersList={users} />
+      {/*</div>*/}
+      <UsersTableSection usersList={users} />
     </div>
   );
 };

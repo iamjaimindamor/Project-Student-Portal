@@ -18,33 +18,62 @@ const Layout = () => {
     };
 
     if (!isAuthenticated) {
+
         toast(
-            "Username : Admin \n Password : tempP@ss123",
+            "Username : NewUser \n Password : Test@123",
             {
-                duration: 6000,
+                duration: 7200,
                 position: "top-right", style: {
                     borderRadius: '10px',
                     background: '#333',
                     color: '#fff'
                 },
-                icon: '👍'
-
-            }
-        );
-
-        toast(
-            "Username : Student \n Password : tempP@ss123",
-            {
-                duration: 6000,
-                position: "top-right", style: {
-                    borderRadius: '10px',
-                    background: '#333',
-                    color: '#fff'
-                },
-                icon: '👍'
+                icon: '🎉'
 
             }
         )
+
+        toast(
+            "Username : Student \n Password : Test@123",
+            {
+                duration: 8000,
+                position: "top-right", style: {
+                    borderRadius: '10px',
+                    background: '#333',
+                    color: '#fff'
+                },
+                icon: '🎓'
+
+            }
+        )
+
+        toast(
+            "Username : Faculty \n Password : Test@123",
+            {
+                duration: 9000,
+                position: "top-right", style: {
+                    borderRadius: '10px',
+                    background: '#333',
+                    color: '#fff'
+                },
+                icon: '🧑‍🏫'
+
+            }
+        )
+
+        toast(
+            "Username : Admin \n Password : Test@123",
+            {
+                duration: 10000,
+                position: "top-right", style: {
+                    borderRadius: '10px',
+                    background: '#333',
+                    color: '#fff'
+                },
+                icon: '👨‍💼'
+
+            }
+        );
     }
 
 

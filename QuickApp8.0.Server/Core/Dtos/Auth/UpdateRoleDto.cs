@@ -11,7 +11,7 @@ namespace QuickApp8._0.Server.Core.Dtos.Auth
 
     public enum RoleType
     {
-        ADMIN,
+        HOD,
         //MANAGER,
         //USER
         FACULTY,

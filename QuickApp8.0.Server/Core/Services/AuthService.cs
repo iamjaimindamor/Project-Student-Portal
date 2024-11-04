@@ -53,18 +53,38 @@ namespace QuickApp8._0.Server.Core.Services
 
             ApplicationUser defaultUserTwo = new ApplicationUser();
             {
-                defaultUserTwo.UserName = "Student";
-                defaultUserTwo.FullName = "Student Account";
-                defaultUserTwo.Email = "student@test.com";
+                defaultUserTwo.UserName = "Faculty";
+                defaultUserTwo.FullName = "Inbuilt Faculty Account";
+                defaultUserTwo.Email = "faculty@test.com";
 
-            }
+            };
+
+            ApplicationUser defaultUserThree = new ApplicationUser();
+            {
+                defaultUserThree.UserName = "Student";
+                defaultUserThree.FullName = "Inbuilt Student Account";
+                defaultUserThree.Email = "student@test.com";
+
+            };
+
+            ApplicationUser defaultUserFour = new ApplicationUser();
+            {
+                defaultUserFour.UserName = "NewUser";
+                defaultUserFour.FullName = "Inbuilt Default Account";
+                defaultUserFour.Email = "newuser@test.com";
+
+            };
 
             if (!await _applicationDbContext.Users.AnyAsync())
             {
 
-                var defaultAdmin = await CreateUserAsync(defaultUserOne, "tempP@ss123",StaticUserRoles.OWNER);
+                var defaultAdmin = await CreateUserAsync(defaultUserOne, "Test@123",StaticUserRoles.OWNER);
               
-                var defaultUser = await CreateUserAsync(defaultUserTwo, "tempP@ss123", StaticUserRoles.USER);
+                var defaultFaculty = await CreateUserAsync(defaultUserTwo, "Test@123", StaticUserRoles.ADMIN);
+
+                var defaultStudent = await CreateUserAsync(defaultUserThree, "Test@123", StaticUserRoles.MANAGER);
+
+                var defaultUser = await CreateUserAsync(defaultUserFour, "Test@123", StaticUserRoles.USER);
 
             }
         }

@@ -73,9 +73,9 @@ export enum RolesEnum {
     // USER = 'USER'
     
     OWNER = 'HOD',
-    ADMIN = 'ADMIN',
-    MANAGER = 'FACULTY',
-    USER = 'STUDENT'
+    ADMIN = 'FACULTY',
+    MANAGER = 'STUDENT',
+    USER = 'USER'
 }
 export interface IUser {
     id:string;

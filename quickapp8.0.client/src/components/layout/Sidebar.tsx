@@ -15,7 +15,8 @@ const Sidebar = () => {
     ownerPage: false,
     adminPage: false,
     managerPage: false,
-    userPage: false
+    userPage: false,
+    newRequest:false
   });
   const navigate = useNavigate();
 
@@ -48,7 +49,8 @@ const Sidebar = () => {
         ownerPage:roles.includes(RolesEnum.OWNER),
         adminPage: roles.includes(RolesEnum.ADMIN) || roles.includes(RolesEnum.OWNER),
         managerPage: roles.includes(RolesEnum.MANAGER) || roles.includes(RolesEnum.ADMIN) || roles.includes(RolesEnum.OWNER),
-        userPage: true  //all authenticated users access the user page
+        userPage: true,  //all authenticated users access the user page
+        newRequest:roles.includes(RolesEnum.OWNER)||roles.includes(RolesEnum.ADMIN)
       });
     }
   }, [user]);
@@ -62,77 +64,86 @@ const Sidebar = () => {
             {user?.fullName}
           </h4>
           <h1 className="text-white text-center ">
-            UserName: {user ? user.userName : '--'}
+            Username : {user ? user.userName : '--'}
           </h1>
           <h1 className="text-white text-center">
-            UserRoles: {userRolesLabelCreator()}
+           {userRolesLabelCreator()}
           </h1>  
       </div>
   
       {visibleButtons.studentManagement &&  (
         <Button 
-         label='Student Manage'
-         onClick={() => handleClick(PATH_DASHBOARD.usersManagement)}
-         type='button'
-         variant='secondary'
+        label='Manage Faculty'
+        onClick={() => handleClick(PATH_DASHBOARD.facultyManagement)}
+        type='button'
+        variant='secondary'
         />
       )}
 
       {visibleButtons.facultyManagement &&  (
         <Button 
-         label='faculty Management'
-         onClick={() => handleClick(PATH_DASHBOARD.facultyManagement)}
+         label="Manage Students"
+         onClick={() => handleClick(PATH_DASHBOARD.usersManagement)}
          type='button'
          variant='secondary'
         />
       )}
+     {visibleButtons.newRequest && (
+        <Button
+        label='New User Request'
+        onClick={() => handleClick(PATH_DASHBOARD.newUser)}
+        type='button'
+        variant='secondary'
+        />
+      )}
+      {visibleButtons.ownerPage && (
+        <Button
+        label="Manage Updates"
+        onClick={() => handleClick(PATH_DASHBOARD.owner)}
+        type='button'
+        variant='secondary'
+        />
+      )}
+      {visibleButtons.adminPage && (
+        <Button
+        label='Admin Page'
+        onClick={() => handleClick(PATH_DASHBOARD.admin)}
+        type='button'
+        variant='secondary'
+        />
+      )}
+      {visibleButtons.managerPage && (
+        <Button
+        label="Manager Page"
+        onClick={() => handleClick(PATH_DASHBOARD.manager)}
+        type='button'
+        variant='secondary'
+        />
+      )}
+      {visibleButtons.userPage && (
+        <Button
+        label='User Page'
+        onClick={() => handleClick(PATH_DASHBOARD.user)}
+        type='button'
+        variant='secondary'
+        />
+      )}
+      <hr />
       {visibleButtons.allLogs && (
         <Button
-         label='All Logs'
+         label='All Activity Logs'
          onClick={() => handleClick(PATH_DASHBOARD.systemLogs)}
          type='button'
          variant='secondary'
         />
       )}
       <Button
-       label='My Logs'
+       label='My Activity Logs'
        onClick={() => handleClick(PATH_DASHBOARD.myLogs)}
        type='button'
        variant='secondary'
       />
-      <hr />
-      {visibleButtons.ownerPage && (
-        <Button
-         label="Owner Page"
-         onClick={() => handleClick(PATH_DASHBOARD.owner)}
-         type='button'
-         variant='secondary'
-        />
-      )}
-      {visibleButtons.adminPage && (
-        <Button
-         label='Admin Page'
-         onClick={() => handleClick(PATH_DASHBOARD.admin)}
-         type='button'
-         variant='secondary'
-        />
-      )}
-      {visibleButtons.managerPage && (
-        <Button
-         label="Manager Page"
-         onClick={() => handleClick(PATH_DASHBOARD.manager)}
-         type='button'
-         variant='secondary'
-        />
-      )}
-      {visibleButtons.userPage && (
-        <Button
-         label='User Page'
-         onClick={() => handleClick(PATH_DASHBOARD.user)}
-         type='button'
-         variant='secondary'
-        />
-      )}
+
     </div>
   );
 };

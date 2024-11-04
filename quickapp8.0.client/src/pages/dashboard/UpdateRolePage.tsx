@@ -71,7 +71,11 @@ const UpdateRolePage = () => {
       };
       await axiosInstance.post(UPDATE_ROLE_URL, updateData);
       setPostLoading(true);
-      toast.success('Role updated Successfully.');
+      if(user?.roles.includes("USER")){
+        toast.success('Request Approved'+ role.charAt(0).toUpperCase()+role.slice(1) +"Assigned");
+      }else{
+        toast.success('Role updated Successfully.');
+      }
       navigate('/dashboard/users-management');
     } catch (error) {
       setPostLoading(false);
@@ -101,11 +105,11 @@ const UpdateRolePage = () => {
   return (
     <div className='p-4 w-2/4 mx-auto flex flex-col gap-4'>
       <div className='bg-white p-2 rounded-md flex flex-col gap-4'>
-        <h1 className='text-2xl font-bold'>Update Role</h1>
+        <h1 className='text-2xl font-bold'>{user?.roles.includes("USER")?<h1>Approve And Provide Assignment</h1>:<h1>Update Roles</h1>}</h1>
 
         <div className='border border-dashed border-purple-300 rounded-md'>
           <h4 className='text-2xl'>
-            UserName :
+            Username :
             <span className='text-2xl ml-2 px-2 py-1 text-black rounded-md'>{userName}</span>
           </h4>
           <h4 className='text-2xl'>
@@ -114,7 +118,7 @@ const UpdateRolePage = () => {
           </h4>
         </div>
 
-        <h4 className='text-xl font-bold'>New Role:</h4>
+        <h4 className='text-xl font-bold'>{user?.roles.includes("USER")?<h4>Assign The Role</h4>:<h4>New Role:</h4>}</h4>
 
         <select value={role} className='w-60' onChange={(e) => setRole(e.target.value)}>
           {allowedRolesForUpdateArray(loggedInUser).map((item) => (
@@ -145,7 +149,7 @@ const UpdateRolePage = () => {
             variant='secondary'
           />
           <Button 
-           label='Update' 
+           label={user?.roles.includes("USER")?"Approve & Assign":"Update Role"} 
            onClick={() => UpdateRole()} 
            type='button' 
            variant='secondary' 

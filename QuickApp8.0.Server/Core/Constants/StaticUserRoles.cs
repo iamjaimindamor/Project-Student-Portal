@@ -8,14 +8,14 @@
         //public const string USER = "USER";
 
         public const string OWNER = "HOD";
-        public const string ADMIN = "ADMIN";
-        public const string MANAGER = "FACULTY";
-        public const string USER = "STUDENT";
+        public const string ADMIN = "FACULTY";
+        public const string MANAGER = "STUDENT";
+        public const string USER = "USER";
 
 
-        public const string OwnerAdmin = "HOD,ADMIN";
-        public const string OwnerAdminManager = "HOD,ADMIN,FACULTY";
-        public const string OwnerAdminManagerUser = "HOD,ADMIN,FACULTY,STUDENT";
+        public const string OwnerAdmin = "HOD,FACULTY";
+        public const string OwnerAdminManager = "HOD,FACULTY,STUDENT";
+        public const string OwnerAdminManagerUser = "HOD,FACULTY,STUDENT,USER";
 
         //public const string OwnerAdmin = "OWNER,ADMIN";
         //public const string OwnerAdminManager = "OWNER,ADMIN,MANAGER";
