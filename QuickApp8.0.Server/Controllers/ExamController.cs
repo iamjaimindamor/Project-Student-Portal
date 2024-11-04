@@ -97,6 +97,79 @@ namespace QuickApp8._0.Server.Controllers
             var result = await examService.CreateGradeHistory(grades);
             return Ok(result);  
         }
+
+        [HttpDelete("/remove-assigned-subject")]
+        public IActionResult RemoveAssignedSubject(string facultyID)
+        {
+           var result = examService.DeleteAssignedSubject(facultyID);
+
+            if (result)
+            {
+                return Ok("Deleted Successfully"+ facultyID + "Assigned Subject");
+            }
+            else
+            {
+                return Ok("No Assignment Found");
+            }
+        }
+
+        [HttpDelete("/delete-subject")]
+        public IActionResult DeleteSubject(Guid subjectID)
+        {
+            var result = examService.DeleteSubject(subjectID);
+
+            if (result)
+            {
+                return Ok("Subject Deleted");
+            }
+            else
+            {
+                return Ok("Subject Not Found");
+            }
+        }
+
+        [HttpDelete("/delete-exam")]
+        public IActionResult DeleteExam(Guid examId)
+        {
+            var result = examService.DeleteExam(examId);
+
+            if (result)
+            {
+                return Ok("Exam Deleted");
+            }
+            else
+            {
+                return Ok("Exam Not Found");
+            }
+        }
+
+        [HttpDelete("/delete-grade-history")]
+        public IActionResult DeleteMarks(Guid Id)
+        {
+            var result = examService.DeleteGradeHistory(Id);
+            if (result)
+            {
+                return Ok("Grade History Deleted");
+            }
+            else
+            {
+                return Ok("Grade History Found");
+            }
+        }
+
+        [HttpDelete("/delete-opted-subject")]
+        public IActionResult DeleteOptedSubject(Guid Id)
+        {
+            var result = examService.DeleteOptedSubject(Id);
+            if (result)
+            {
+                return Ok("Deleted Opted Selection");
+            }
+            else
+            {
+                return Ok("Opted Selection Not Found");
+            }
+        }
         
 
     }

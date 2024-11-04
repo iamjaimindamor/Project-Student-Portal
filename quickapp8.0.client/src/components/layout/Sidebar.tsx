@@ -106,7 +106,7 @@ const Sidebar = () => {
       )}
       {visibleButtons.adminPage && (
         <Button
-        label='Admin Page'
+        label='Manage Exam'
         onClick={() => handleClick(PATH_DASHBOARD.admin)}
         type='button'
         variant='secondary'
@@ -114,7 +114,7 @@ const Sidebar = () => {
       )}
       {visibleButtons.managerPage && (
         <Button
-        label="Manager Page"
+        label="Manage Subjects"
         onClick={() => handleClick(PATH_DASHBOARD.manager)}
         type='button'
         variant='secondary'
@@ -122,7 +122,7 @@ const Sidebar = () => {
       )}
       {visibleButtons.userPage && (
         <Button
-        label='User Page'
+        label='Assign Subjects'
         onClick={() => handleClick(PATH_DASHBOARD.user)}
         type='button'
         variant='secondary'

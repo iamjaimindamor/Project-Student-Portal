@@ -38,6 +38,70 @@ namespace QuickApp8._0.Server.Core.Services
 
         }
 
+        public bool DeleteAssignedSubject(string facultyID)
+        {
+            var isExist = applicationDbContext.assignedSubjects.FirstOrDefault(x=>x.FacultyID == facultyID);
+            if (isExist.Id != null)
+            {
+                applicationDbContext.assignedSubjects.Remove(isExist);
+                applicationDbContext.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+
+        public bool DeleteExam(Guid examID)
+        {
+            var isExam = applicationDbContext.exams.FirstOrDefault(x => x.ExamId == examID);
+            if(isExam.ExamId != null)
+            {
+                applicationDbContext.exams.Remove(isExam);
+                applicationDbContext.SaveChanges();
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool DeleteGradeHistory(Guid gradeSerial)
+        {
+            var isGrade = applicationDbContext.gradeHistory.FirstOrDefault(x => x.SerialNumber == gradeSerial);
+            if (isGrade.SerialNumber != null)
+            {
+                applicationDbContext.gradeHistory.Remove(isGrade);
+                applicationDbContext.SaveChanges();
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool DeleteOptedSubject(Guid Id)
+        {
+            var isOptedSubject = applicationDbContext.SubbyStudents.FirstOrDefault(x => x.Id== Id);
+            if (isOptedSubject.Id!= null)
+            {
+                applicationDbContext.SubbyStudents.Remove(isOptedSubject);
+                applicationDbContext.SaveChanges();
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool DeleteSubject(Guid subjectID)
+        {
+            var isSubject = applicationDbContext.subjects.FirstOrDefault(x => x.SubjectID == subjectID);
+            if(isSubject != null)
+            {
+                applicationDbContext.subjects.Remove(isSubject);
+                applicationDbContext.SaveChanges();
+                return true;
+            }
+
+            return false;
+        }
+
         public IList<GradeHistory> GetAllStudentGrade()
         {
             return applicationDbContext.gradeHistory.ToList();
