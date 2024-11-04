@@ -94,7 +94,7 @@ namespace QuickApp8._0.Server.Controllers
         [HttpPost("/grading-students")]
         public async Task<IActionResult> GradingStudents(GradeHistory grades)
         {
-            var result = examService.CreateGradeHistory(grades);
+            var result = await examService.CreateGradeHistory(grades);
             return Ok(result);  
         }
         

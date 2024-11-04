@@ -25,7 +25,7 @@ namespace QuickApp8._0.Server.Core.Services
 
         public async Task<GradeHistory> CreateGradeHistory(GradeHistory gradeHistory)
         {
-            await applicationDbContext.gradeHistory.AddAsync(gradeHistory);
+            applicationDbContext.gradeHistory.Update(gradeHistory);
             await applicationDbContext.SaveChangesAsync();
             return gradeHistory;
         }
