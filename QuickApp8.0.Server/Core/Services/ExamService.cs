@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using QuickApp8._0.Server.Core.DbContext;
 using QuickApp8._0.Server.Core.Entities;
 using QuickApp8._0.Server.Core.Interfaces;
@@ -40,7 +41,7 @@ namespace QuickApp8._0.Server.Core.Services
 
         public bool DeleteAssignedSubject(string facultyID)
         {
-            var isExist = applicationDbContext.assignedSubjects.FirstOrDefault(x=>x.FacultyID == facultyID);
+            var isExist = applicationDbContext.assignedSubjects.FirstOrDefault(x => x.FacultyID == facultyID);
             if (isExist.Id != null)
             {
                 applicationDbContext.assignedSubjects.Remove(isExist);
@@ -53,7 +54,7 @@ namespace QuickApp8._0.Server.Core.Services
         public bool DeleteExam(Guid examID)
         {
             var isExam = applicationDbContext.exams.FirstOrDefault(x => x.ExamId == examID);
-            if(isExam.ExamId != null)
+            if (isExam.ExamId != null)
             {
                 applicationDbContext.exams.Remove(isExam);
                 applicationDbContext.SaveChanges();
@@ -78,8 +79,8 @@ namespace QuickApp8._0.Server.Core.Services
 
         public bool DeleteOptedSubject(Guid Id)
         {
-            var isOptedSubject = applicationDbContext.SubbyStudents.FirstOrDefault(x => x.Id== Id);
-            if (isOptedSubject.Id!= null)
+            var isOptedSubject = applicationDbContext.SubbyStudents.FirstOrDefault(x => x.Id == Id);
+            if (isOptedSubject.Id != null)
             {
                 applicationDbContext.SubbyStudents.Remove(isOptedSubject);
                 applicationDbContext.SaveChanges();
@@ -92,7 +93,7 @@ namespace QuickApp8._0.Server.Core.Services
         public bool DeleteSubject(Guid subjectID)
         {
             var isSubject = applicationDbContext.subjects.FirstOrDefault(x => x.SubjectID == subjectID);
-            if(isSubject != null)
+            if (isSubject != null)
             {
                 applicationDbContext.subjects.Remove(isSubject);
                 applicationDbContext.SaveChanges();
@@ -114,7 +115,9 @@ namespace QuickApp8._0.Server.Core.Services
 
         public IList<AssignedSubject> GetAssignedSubjects()
         {
-            return applicationDbContext.assignedSubjects.ToList();
+            var list = applicationDbContext.assignedSubjects.Include(o=>o.FacultySubject).ToList();
+
+            return list;
         }
 
         public IList<Exam> GetExamList()

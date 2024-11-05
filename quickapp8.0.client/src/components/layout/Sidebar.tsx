@@ -107,7 +107,7 @@ const Sidebar = () => {
       {visibleButtons.adminPage && (
         <Button
         label='Manage Exam'
-        onClick={() => handleClick(PATH_DASHBOARD.admin)}
+        onClick={() => handleClick(PATH_DASHBOARD.addExam)}
         type='button'
         variant='secondary'
         />

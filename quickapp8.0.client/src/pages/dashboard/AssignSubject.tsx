@@ -6,12 +6,14 @@ import axiosInstance from '../../utils/axiosInstance';
 import { IAuthUser } from '../../types/auth.types';
 import { ASSIGN_SUB, GET_ALL_SUB, USERS_LIST_URL } from '../../utils/globalConfig';
 import AuthSpinner from '../../components/general/AuthSpinner';
+import GetAssignedSub from '../../components/assigning-mechanism/GetAssignedSub';
 
 const AssignSubject = () => {
     const [loading, setLoading] = useState<boolean>(false);
     const { register, handleSubmit, formState: { errors }, setValue, reset } = useForm({ mode: "onChange" });
     const [users, setUsers] = useState<IAuthUser[]>([]);
     const [subjects, setSubjects] = useState<[{ subjectID: string, subjectName: string }]>();
+    const [subjectAssignmentAdded, setSubjectAssignmentSubjectState] = useState<boolean>(false);
 
     const getFacultyList = async () => {
         try {
@@ -66,12 +68,12 @@ const AssignSubject = () => {
                 subjectName: data.subjectName,
             },
         };
-        console.log("Form Submitted", formattedData); // Log form data
 
         // Perform API call to register the faculty subject assignment
         try {
             const response = await axiosInstance.post(ASSIGN_SUB, formattedData);
             if (response.status === 200) {
+                setSubjectAssignmentSubjectState(!subjectAssignmentAdded);
                 toast.success('Faculty subject assigned successfully!');
                 reset(); // Reset the form on successful submission
             } else {
@@ -159,17 +161,21 @@ const AssignSubject = () => {
                                 toast.error("Operation Cancelled");
                                 reset(); // Reset the form when canceled
                             }}
-                        />
+                            />
                          <Button
                             label="Assign Subject"
                             type="submit"
                             variant="secondary"
                             onClick={() => {
-                               
+                            //                           
                             }}
                         />
                     </div>
                 </form>
+            </div>
+            <div>
+            <h4 className='display-5 bg-white pt-1 pb-1 pl-5'>Assigned Subjects </h4>
+                <GetAssignedSub updateData={subjectAssignmentAdded}/>
             </div>
         </div>
     );

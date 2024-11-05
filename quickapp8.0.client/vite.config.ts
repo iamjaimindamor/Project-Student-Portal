@@ -69,6 +69,26 @@ export default defineConfig({
             '^/assign-subject-to-faculty':{
                 target,
                 secure: false
+            },
+            '^/assigned-faculty':{
+                target,
+                secure: false
+            },
+            '^/remove-assigned-subject':{
+                target,
+                secure: false
+            },
+            '^/start-exam':{
+                target,
+                secure: false
+            },
+            '^/get-exams-list':{
+                target,
+                secure: false
+            },
+            '^/delete-exam':{
+                target,
+                secure: false
             }
         },
         port: 5173,

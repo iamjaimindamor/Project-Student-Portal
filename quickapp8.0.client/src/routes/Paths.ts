@@ -11,6 +11,7 @@ export const PATH_DASHBOARD = {
     usersManagement: '/dashboard/users-management',
     subjectManagement:'/dashboard/subject-management',
     assignSubject:'/dashboard/assign-subject',
+    addExam:'/dashboard/create-exam',
     newUser: '/dashboard/new-user-request',
     facultyManagement:'/dashboard/faculty-management',
     updateRole: '/dashboard/update-role/:userName',

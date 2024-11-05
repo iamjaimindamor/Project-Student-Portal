@@ -18,6 +18,11 @@ export const ADD_SUBJECT = 'add-subjects';
 export const DELETE_SUBJECT = 'delete-subject';
 export const GET_ALL_SUB = 'get-subjects';
 export const ASSIGN_SUB = 'assign-subject-to-faculty';
+export const GET_ASSIGN_SUB = 'assigned-faculty';
+export const DELETE_ASSIGN_SUB = 'remove-assigned-subject';
+export const ADD_EXAM = 'start-exam';
+export const REMOVE_EXAM = 'delete-exam';
+export const GET_EXAMSLIST = 'get-exams-list';
 
 // Auth Routes
 export const PATH_AFTER_REGISTER = PATH_PUBLIC.login;
