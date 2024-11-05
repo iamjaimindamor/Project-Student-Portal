@@ -115,7 +115,7 @@ const Sidebar = () => {
       {visibleButtons.managerPage && (
         <Button
         label="Manage Subjects"
-        onClick={() => handleClick(PATH_DASHBOARD.manager)}
+        onClick={() => handleClick(PATH_DASHBOARD.subjectManagement)}
         type='button'
         variant='secondary'
         />

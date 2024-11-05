@@ -9,6 +9,7 @@ export const PATH_PUBLIC = {
 export const PATH_DASHBOARD = {
     dashboard: '/dashboard',
     usersManagement: '/dashboard/users-management',
+    subjectManagement:'/dashboard/subject-management',
     newUser: '/dashboard/new-user-request',
     facultyManagement:'/dashboard/faculty-management',
     updateRole: '/dashboard/update-role/:userName',

@@ -53,6 +53,18 @@ export default defineConfig({
             '^/Auth': {
                 target,
                 secure: false
+            },
+            '^/get-subjects':{
+                target,
+                secure: false
+            },
+            '^/add-subjects':{
+                target,
+                secure: false
+            },
+            '^/delete-subject':{
+                target,
+                secure: false
             }
         },
         port: 5173,

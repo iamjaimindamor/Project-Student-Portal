@@ -13,6 +13,11 @@ export const MY_LOGS_URL = '/api/Logs/mine';
 export const BLOCK_URL = '/api/Auth/blocked';
 export const OIDC_URL = '/connect/token';
 
+//Exam Paths
+export const ADD_SUBJECT = 'add-subjects';
+export const DELETE_SUBJECT = 'delete-subject';
+export const GET_ALL_SUB = 'get-subjects';
+
 // Auth Routes
 export const PATH_AFTER_REGISTER = PATH_PUBLIC.login;
 export const PATH_AFTER_LOGIN = PATH_DASHBOARD.dashboard;
