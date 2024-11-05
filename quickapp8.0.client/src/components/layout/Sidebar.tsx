@@ -123,7 +123,7 @@ const Sidebar = () => {
       {visibleButtons.userPage && (
         <Button
         label='Assign Subjects'
-        onClick={() => handleClick(PATH_DASHBOARD.user)}
+        onClick={() => handleClick(PATH_DASHBOARD.assignSubject)}
         type='button'
         variant='secondary'
         />

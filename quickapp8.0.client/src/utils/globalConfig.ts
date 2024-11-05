@@ -17,6 +17,7 @@ export const OIDC_URL = '/connect/token';
 export const ADD_SUBJECT = 'add-subjects';
 export const DELETE_SUBJECT = 'delete-subject';
 export const GET_ALL_SUB = 'get-subjects';
+export const ASSIGN_SUB = 'assign-subject-to-faculty';
 
 // Auth Routes
 export const PATH_AFTER_REGISTER = PATH_PUBLIC.login;

@@ -65,6 +65,10 @@ export default defineConfig({
             '^/delete-subject':{
                 target,
                 secure: false
+            },
+            '^/assign-subject-to-faculty':{
+                target,
+                secure: false
             }
         },
         port: 5173,
