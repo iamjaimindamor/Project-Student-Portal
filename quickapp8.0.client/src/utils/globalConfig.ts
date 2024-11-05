@@ -12,6 +12,7 @@ export const LOGS_URL = '/api/Logs';
 export const MY_LOGS_URL = '/api/Logs/mine';
 export const BLOCK_URL = '/api/Auth/blocked';
 export const OIDC_URL = '/connect/token';
+export const GET_USER_BY_USERNAME = '/api/Auth/users'
 
 //Exam Paths
 export const ADD_SUBJECT = 'add-subjects';
@@ -26,6 +27,9 @@ export const GET_EXAMSLIST = 'get-exams-list';
 export const ENTER_MARKS = 'grading-students';
 export const GET_RESULTS = 'results';
 export const DELETE_RESULT_INFO = 'delete-grade-history';
+export const GET_ALL_SELECTED_SUB = 'all-students-opted-subject';
+export const DELETED_SELECTED_SUB = 'delete-opted-subject';
+export const SELECT_A_SUBJECT = 'opt-subject';
 
 
 // Auth Routes

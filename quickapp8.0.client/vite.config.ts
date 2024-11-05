@@ -101,7 +101,20 @@ export default defineConfig({
             '^/delete-grade-history':{
                 target,
                 secure: false
+            },
+            '^/all-students-opted-subject':{
+                target,
+                secure: false
+            },
+            '^/delete-opted-subject':{
+                target,
+                secure: false
+            },
+            '^/opt-subject':{
+                target,
+                secure: false
             }
+
         },
         port: 5173,
         https: {

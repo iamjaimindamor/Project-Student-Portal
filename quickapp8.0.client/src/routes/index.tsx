@@ -20,6 +20,7 @@ import AddSubject from "../pages/dashboard/AddSubject";
 import AssignSubject from "../pages/dashboard/AssignSubject";
 import AddExam from "../pages/dashboard/AddExam";
 import Grading from "../pages/dashboard/Grading";
+import SubjectSelection from "../pages/dashboard/SubjectSelection";
 // import facultypage from "../pages/dashboard"
 
 const GlobalRouter = () => {
@@ -45,6 +46,7 @@ const GlobalRouter = () => {
         
                 <Route element={<AuthGuard roles={managerAccessRoles}/>}>
                     <Route path={PATH_DASHBOARD.usersManagement}  element={<UsersManagementPage sendpath="Student"/>}/>
+                    <Route path={PATH_DASHBOARD.subjectSelection}  element={<SubjectSelection/>}/>
                     <Route path={PATH_DASHBOARD.facultyManagement}  element={<UsersManagementPage sendpath="Faculty"/>}/>
                     <Route path={PATH_DASHBOARD.manager} element={<ManagerPage/>}/>
                 </Route>

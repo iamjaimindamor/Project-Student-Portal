@@ -110,12 +110,13 @@ namespace QuickApp8._0.Server.Core.Services
 
         public IList<OptedSubjectByStudents> GetAllStudentsOptedSubject()
         {
-            return applicationDbContext.SubbyStudents.ToList();
+            var List = applicationDbContext.SubbyStudents.Include(o => o.SelectedSubject).ToList();
+            return List;
         }
 
         public IList<AssignedSubject> GetAssignedSubjects()
         {
-            var list = applicationDbContext.assignedSubjects.Include(o=>o.FacultySubject).ToList();
+            var list = applicationDbContext.assignedSubjects.Include(o => o.FacultySubject).ToList();
 
             return list;
         }
@@ -132,7 +133,7 @@ namespace QuickApp8._0.Server.Core.Services
 
         public async Task<OptedSubjectByStudents> OptingSubject(OptedSubjectByStudents optingSubject)
         {
-            await applicationDbContext.SubbyStudents.AddAsync(optingSubject);
+            applicationDbContext.SubbyStudents.Update(optingSubject);
             await applicationDbContext.SaveChangesAsync();
             return optingSubject;
         }

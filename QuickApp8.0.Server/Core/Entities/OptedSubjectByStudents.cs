@@ -8,7 +8,7 @@ namespace QuickApp8._0.Server.Core.Entities
         public Guid Id { get; set; }
         public string? StudentId { get; set; }
 
-        public Guid SubjectID { get; set; }
+        public Subject? SelectedSubject { get; set; }
 
     }
 }

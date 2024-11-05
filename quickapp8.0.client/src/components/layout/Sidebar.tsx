@@ -16,7 +16,8 @@ const Sidebar = () => {
     adminPage: false,
     managerPage: false,
     userPage: false,
-    newRequest:false
+    newRequest:false,
+    studentOnly:false
   });
   const navigate = useNavigate();
 
@@ -50,7 +51,8 @@ const Sidebar = () => {
         adminPage: roles.includes(RolesEnum.ADMIN) || roles.includes(RolesEnum.OWNER),
         managerPage: roles.includes(RolesEnum.MANAGER) || roles.includes(RolesEnum.ADMIN) || roles.includes(RolesEnum.OWNER),
         userPage: true,  //all authenticated users access the user page
-        newRequest:roles.includes(RolesEnum.OWNER)||roles.includes(RolesEnum.ADMIN)
+        newRequest:roles.includes(RolesEnum.OWNER)||roles.includes(RolesEnum.ADMIN),
+        studentOnly:roles.includes(RolesEnum.MANAGER)
       });
     }
   }, [user]);
@@ -120,6 +122,14 @@ const Sidebar = () => {
         variant='secondary'
         />
       )}
+        {/* {visibleButtons.studentOnly && ( */}
+        <Button
+        label="Subject Selection"
+        onClick={() => handleClick(PATH_DASHBOARD.subjectSelection)}
+        type='button'
+        variant='secondary'
+        />
+      {/* )} */}
       {visibleButtons.userPage && (
         <Button
         label='Assign Subjects'
