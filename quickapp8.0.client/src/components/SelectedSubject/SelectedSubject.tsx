@@ -3,14 +3,23 @@ import { FaSearch } from 'react-icons/fa';
 import Button from '../general/Button';
 import axiosInstance from '../../utils/axiosInstance';
 import toast from 'react-hot-toast';
-import { DELETED_SELECTED_SUB, GET_ALL_SELECTED_SUB } from '../../utils/globalConfig';
+import { DELETED_SELECTED_SUB, GET_ALL_SELECTED_SUB, GET_USER_BY_USERNAME } from '../../utils/globalConfig';
+import useAuth from '../../hooks/useAuth.hooks';
 
 const SelectedSubject = (props?: any) => {
-
+    const { user } = useAuth();
     const [optedsubject, setOptedSubject] = useState<[{ subjectID: string, subjectName: string }]>();
     const [search, setSearch] = useState<string>("");
     const [updateData, SetUpdateState] = useState<boolean>(false);
+    const [currentUserId, SetCurrentUserId] = useState();
+    const getUserIdByUsername = async (Username?: string) => {
 
+        const currentUser = await axiosInstance.get(GET_USER_BY_USERNAME + "/" + user?.userName);
+        if (currentUser) {
+            SetCurrentUserId(currentUser.data.id);
+        }
+    }
+    getUserIdByUsername(user?.userName)
     useEffect(() => {
 
         ; (async () => {
@@ -50,7 +59,9 @@ const SelectedSubject = (props?: any) => {
                 <div className="flex justify-center">Actions</div>
             </div>
 
-            {optedsubject?.filter((subList: any) => {
+            {optedsubject?.filter((sublist: any) => {
+                return sublist.studentId == currentUserId
+            }).filter((subList: any) => {
                 return search.toLowerCase() === ""
                     ? subList
                     : subList.selectedSubject.subjectName.toLowerCase().includes(search.toLowerCase());

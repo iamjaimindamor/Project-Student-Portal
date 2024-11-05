@@ -105,7 +105,8 @@ namespace QuickApp8._0.Server.Core.Services
 
         public IList<GradeHistory> GetAllStudentGrade()
         {
-            return applicationDbContext.gradeHistory.ToList();
+            var list = applicationDbContext.gradeHistory.Include(o => o.GradeExam).Include(o => o.E_Subject).ToList();
+            return list;
         }
 
         public IList<OptedSubjectByStudents> GetAllStudentsOptedSubject()

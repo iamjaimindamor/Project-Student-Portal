@@ -105,6 +105,21 @@ namespace QuickApp8._0.Server.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("usersById/{userID}")]
+        public async Task<ActionResult<UserInfoResult>> GetUserDetailsByUserId([FromRoute] string userID)
+        {
+            var user = await _authService.GetUserDetailsByUserIdAsync(userID);
+            if (user is not null)
+            {
+                return Ok(user);
+            }
+            else
+            {
+                return NotFound("UserName not found");
+            }
+        }
+
         // Route -> Delete the User
         [HttpDelete]
         [Route("users/{Id}")]

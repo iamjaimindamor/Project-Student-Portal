@@ -505,5 +505,15 @@ namespace QuickApp8._0.Server.Core.Services
             };
         }
 
+        public async Task<UserInfoResult?> GetUserDetailsByUserIdAsync(string userID)
+        {
+            var user = await _userManager.FindByIdAsync(userID);
+            if (user == null)
+                return null;
+
+            var roles = await _userManager.GetRolesAsync(user);
+            var userInfo = GenerateUserInfoObject(user, roles);
+            return userInfo;
+        }
     }
 }

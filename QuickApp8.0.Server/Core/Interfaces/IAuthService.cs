@@ -14,6 +14,7 @@ namespace QuickApp8._0.Server.Core.Interfaces
         Task<UserInfoResult?> MeAsync(ClaimsPrincipal User);
         Task<IEnumerable<UserInfoResult>> GetUsersListAsync();
         Task<UserInfoResult?> GetUserDetailsByUserNameAsync(string userName);
+        Task<UserInfoResult?> GetUserDetailsByUserIdAsync(string userID);
         Task<string> DeleteByIdAsync(string Id);
         Task<GenralServiceResponseDto> BlockByIdAsync(string Id);
     }

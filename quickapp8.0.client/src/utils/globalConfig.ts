@@ -12,7 +12,8 @@ export const LOGS_URL = '/api/Logs';
 export const MY_LOGS_URL = '/api/Logs/mine';
 export const BLOCK_URL = '/api/Auth/blocked';
 export const OIDC_URL = '/connect/token';
-export const GET_USER_BY_USERNAME = '/api/Auth/users'
+export const GET_USER_BY_USERNAME = '/api/Auth/users';
+export const GET_USER_BY_USERID = '/api/Auth/usersById';
 
 //Exam Paths
 export const ADD_SUBJECT = 'add-subjects';
