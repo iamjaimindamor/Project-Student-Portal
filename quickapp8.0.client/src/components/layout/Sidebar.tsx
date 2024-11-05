@@ -128,6 +128,15 @@ const Sidebar = () => {
         variant='secondary'
         />
       )}
+            {visibleButtons.userPage && (
+        <Button
+        label='Grading Students'
+        onClick={() => handleClick(PATH_DASHBOARD.marksEntry)}
+        type='button'
+        variant='secondary'
+        />
+      )}
+
       <hr />
       {visibleButtons.allLogs && (
         <Button

@@ -23,6 +23,10 @@ export const DELETE_ASSIGN_SUB = 'remove-assigned-subject';
 export const ADD_EXAM = 'start-exam';
 export const REMOVE_EXAM = 'delete-exam';
 export const GET_EXAMSLIST = 'get-exams-list';
+export const ENTER_MARKS = 'grading-students';
+export const GET_RESULTS = 'results';
+export const DELETE_RESULT_INFO = 'delete-grade-history';
+
 
 // Auth Routes
 export const PATH_AFTER_REGISTER = PATH_PUBLIC.login;

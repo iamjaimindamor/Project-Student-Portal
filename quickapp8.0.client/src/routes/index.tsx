@@ -19,6 +19,7 @@ import OwnerPage from "../pages/dashboard/OwnerPage";
 import AddSubject from "../pages/dashboard/AddSubject";
 import AssignSubject from "../pages/dashboard/AssignSubject";
 import AddExam from "../pages/dashboard/AddExam";
+import Grading from "../pages/dashboard/Grading";
 // import facultypage from "../pages/dashboard"
 
 const GlobalRouter = () => {
@@ -53,6 +54,7 @@ const GlobalRouter = () => {
                     <Route path={PATH_DASHBOARD.facultyManagement}  element={<UsersManagementPage sendpath="Faculty"/>}/>
                     <Route path={PATH_DASHBOARD.newUser}  element={<UsersManagementPage sendpath="New Request"/>}/>
                     <Route path={PATH_DASHBOARD.addExam}  element={<AddExam/>}/>
+                    <Route path={PATH_DASHBOARD.marksEntry}  element={<Grading/>}/>
                     <Route path={PATH_DASHBOARD.subjectManagement}  element={<AddSubject/>}/>
                     <Route path={PATH_DASHBOARD.assignSubject}  element={<AssignSubject/>}/>
                     <Route path={PATH_DASHBOARD.updateRole} element={<UpdateRolePage />} />

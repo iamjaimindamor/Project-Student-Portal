@@ -89,6 +89,18 @@ export default defineConfig({
             '^/delete-exam':{
                 target,
                 secure: false
+            },
+            '^/grading-students':{
+                target,
+                secure: false
+            },
+            '^/results':{
+                target,
+                secure: false
+            },
+            '^/delete-grade-history':{
+                target,
+                secure: false
             }
         },
         port: 5173,
