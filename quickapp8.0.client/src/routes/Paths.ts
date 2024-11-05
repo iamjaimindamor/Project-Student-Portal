@@ -24,4 +24,5 @@ export const PATH_DASHBOARD = {
     admin: '/dashboard/admin',
     manager: '/dashboard/manager',
     user: '/dashboard/user',
+    all_result:'/dashboard/all_students_result'
 }

@@ -21,6 +21,7 @@ import AssignSubject from "../pages/dashboard/AssignSubject";
 import AddExam from "../pages/dashboard/AddExam";
 import Grading from "../pages/dashboard/Grading";
 import SubjectSelection from "../pages/dashboard/SubjectSelection";
+import Results from "../pages/dashboard/Results";
 // import facultypage from "../pages/dashboard"
 
 const GlobalRouter = () => {
@@ -62,6 +63,7 @@ const GlobalRouter = () => {
                     <Route path={PATH_DASHBOARD.updateRole} element={<UpdateRolePage />} />
                     <Route path={PATH_DASHBOARD.systemLogs} element={<SystemLogsPage />} />
                     <Route path={PATH_DASHBOARD.admin} element={<AdminPage />} />
+                    <Route path={PATH_DASHBOARD.all_result} element={<Results />} />
                 </Route>
 
                 <Route element={<AuthGuard roles={ownerAccessRoles} />}>

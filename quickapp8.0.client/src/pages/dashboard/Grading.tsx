@@ -6,6 +6,7 @@ import Button from '../../components/general/Button';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import MarksEntry from '../../components/grading-mechanism/MarksEntry';
+import GradedStudent from '../../components/graded-student/GradedStudent';
 
 const Grading = () => {
 
@@ -39,7 +40,6 @@ const Grading = () => {
         const ids = assignedsubject
             ?.filter((sublist: any) => sublist.facultyID == currentUserId)
             .map((sub: any) => sub.facultySubject.subjectID);
-
         setSubjectIds(ids || []);
     }, [assignedsubject, currentUserId])
 
@@ -54,20 +54,27 @@ const Grading = () => {
                         <br />
                         <p className='text-2xl font-bold'>Your Subjects :&nbsp;
                             <span className='font-normal'>
-                            {assignedsubject?.filter((sublist: any) => {
-                                return sublist.facultyID == currentUserId
-                            }).map((sub: any) => (
-                                sub.facultySubject.subjectName
-                            )).join(' , ')}
-                        </span>
+                                {assignedsubject?.filter((sublist: any) => {
+                                    return sublist.facultyID == currentUserId
+                                }).map((sub: any) => (
+                                    sub.facultySubject.subjectName
+                                )).join(' , ')}
+                            </span>
                         </p>
                     </div>
                 </div>
                 <div>
                     <h4 className='text-danger text-xl bg-white pt-1 pb-1 pl-2'>*Below is List Of Student Opted This Subject.</h4>
-                    <MarksEntry yourSubject={subjectIds} />
+                    {assignedsubject?.filter((sublist: any) => {
+                                    return sublist.facultyID == currentUserId
+                                }).length != 0?<MarksEntry yourSubject={subjectIds} />:<pre className='display-6 bg-white'><span style={{color:"red"}} className='display-6'>NOTE : </span>Subjects Are Not Assigned Yet Contact Admin</pre>}
+                </div>
+                <div className='bg-white p-2 rounded-md flex flex-col gap-4'>
+                    <h3 className='display-4'>Graded Students</h3>
+                    <GradedStudent yourSubject={subjectIds}/>
                 </div>
             </div>
+
         </>)
 }
 
