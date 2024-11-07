@@ -18,6 +18,7 @@ namespace QuickApp8._0.Server.Controllers
             this.examService = examService;
         }
 
+        [Authorize(Roles = StaticUserRoles.OwnerAdminManager)]
         [HttpGet("/get-exams-list")]
         public IActionResult GetExamDetails()
         {
@@ -25,7 +26,7 @@ namespace QuickApp8._0.Server.Controllers
             return Ok(exam);
         }
 
-        //[Authorize (Roles = StaticUserRoles.OwnerAdmin)]
+        [Authorize (Roles = StaticUserRoles.OwnerAdmin)]
         [HttpPost("/start-exam")]
         public async Task<IActionResult> initializeExam(Exam exam)
         {
@@ -41,6 +42,7 @@ namespace QuickApp8._0.Server.Controllers
             }
         }
 
+        [Authorize (Roles = StaticUserRoles.OwnerAdmin)]
         [HttpGet("/assigned-faculty")]
         public IActionResult GetAssignedFaculty()
         {
@@ -49,6 +51,7 @@ namespace QuickApp8._0.Server.Controllers
             return Ok(result);
         }
 
+        [Authorize (Roles = StaticUserRoles.OwnerAdmin)]
         [HttpPost("/assign-subject-to-faculty")]
         public async Task<IActionResult> AssignedFacultySubject(AssignedSubject assignedSubject)
         {
@@ -56,6 +59,7 @@ namespace QuickApp8._0.Server.Controllers
             return Ok(result);
         }
 
+        [Authorize (Roles = StaticUserRoles.OWNER)]
         [HttpPost("/add-subjects")]
         public async Task<IActionResult> Add_Subject(Subject subject)
         {
@@ -63,6 +67,7 @@ namespace QuickApp8._0.Server.Controllers
             return Ok(result);
         }
 
+        [Authorize(Roles = StaticUserRoles.OwnerAdminManager)]
         [HttpGet("/get-subjects")]
         public IActionResult GetSubjects()
         {
@@ -70,6 +75,7 @@ namespace QuickApp8._0.Server.Controllers
             return Ok(result);
         }
 
+        [Authorize(Roles = StaticUserRoles.OwnerAdminManager)]
         [HttpGet("/all-students-opted-subject")]
         public IActionResult GetAllOptedSubjectList()
         {
@@ -77,6 +83,7 @@ namespace QuickApp8._0.Server.Controllers
             return Ok(result);
         }
 
+        [Authorize(Roles = StaticUserRoles.OwnerAdminManager)]
         [HttpPost("/opt-subject")]
         public async Task<IActionResult> OptSubject(OptedSubjectByStudents subjectByStudents)
         {
@@ -91,6 +98,7 @@ namespace QuickApp8._0.Server.Controllers
             return Ok(result);
         }
 
+        [Authorize(Roles = StaticUserRoles.OwnerAdmin)]
         [HttpPost("/grading-students")]
         public async Task<IActionResult> GradingStudents(GradeHistory grades)
         {
@@ -98,6 +106,7 @@ namespace QuickApp8._0.Server.Controllers
             return Ok(result);
         }
 
+        [Authorize(Roles = StaticUserRoles.OWNER)]
         [HttpDelete("/remove-assigned-subject")]
         public IActionResult RemoveAssignedSubject(string facultyID)
         {
@@ -113,6 +122,8 @@ namespace QuickApp8._0.Server.Controllers
             }
         }
 
+
+        [Authorize(Roles = StaticUserRoles.OWNER)]
         [HttpDelete("/delete-subject")]
         public IActionResult DeleteSubject(Guid subjectID)
         {
@@ -128,6 +139,7 @@ namespace QuickApp8._0.Server.Controllers
             }
         }
 
+        [Authorize(Roles = StaticUserRoles.OWNER)]
         [HttpDelete("/delete-exam")]
         public IActionResult DeleteExam(Guid examId)
         {
@@ -143,6 +155,7 @@ namespace QuickApp8._0.Server.Controllers
             }
         }
 
+        [Authorize(Roles = StaticUserRoles.OwnerAdmin)]
         [HttpDelete("/delete-grade-history")]
         public IActionResult DeleteMarks(Guid Id)
         {
@@ -157,6 +170,7 @@ namespace QuickApp8._0.Server.Controllers
             }
         }
 
+        [Authorize(Roles = StaticUserRoles.OwnerAdminManager)]
         [HttpDelete("/delete-opted-subject")]
         public IActionResult DeleteOptedSubject(Guid Id)
         {
@@ -171,6 +185,7 @@ namespace QuickApp8._0.Server.Controllers
             }
         }
 
+        [Authorize(Roles = StaticUserRoles.OwnerAdminManager)]
         [HttpPut("/update-exam-state")]
         public async Task<IActionResult> UpdateExamState(Guid ExamId, Exam UpdatedExamState)
         {
@@ -186,6 +201,7 @@ namespace QuickApp8._0.Server.Controllers
 
         }
 
+        [Authorize(Roles = StaticUserRoles.OwnerAdminManager)]
         [HttpPut("/lock-unlock-subject-select")]
         public async Task<IActionResult> LockingSubjectSelection(string studentId , bool lockingstatus)
         {

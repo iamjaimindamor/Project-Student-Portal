@@ -26,5 +26,6 @@ export const PATH_DASHBOARD = {
     manager: '/dashboard/manager',
     user: '/dashboard/user',
     all_result:'/dashboard/all_students_result',
-    yourMarks:'/dashboard/marks'
+    yourMarks:'/dashboard/marks',
+    facultyPage:'/dashboard-faculty-profile'
 }

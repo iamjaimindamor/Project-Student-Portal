@@ -73,6 +73,15 @@ const Sidebar = () => {
         </h1>
       </div>
 
+      {visibleButtons.adminPage && (
+        <Button
+          label='Profile'
+          onClick={() => handleClick(PATH_DASHBOARD.facultyPage)}
+          type='button'
+          variant='secondary'
+        />
+      )}
+
       {visibleButtons.facultyManagement && (
         <Button
           label='Manage Faculty'

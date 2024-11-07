@@ -23,10 +23,12 @@ import Grading from "../pages/dashboard/Grading";
 import SubjectSelection from "../pages/dashboard/SubjectSelection";
 import Results from "../pages/dashboard/Results";
 import StudentGrade from "../pages/dashboard/StudentGrade";
+import FacultyPage from "../pages/dashboard/FacultyPage";
 // import facultypage from "../pages/dashboard"
 
 const GlobalRouter = () => {
     var sendpath:any
+    
     return (
         <Routes>
             {/* <Route path='' element /> */}
@@ -64,7 +66,7 @@ const GlobalRouter = () => {
                     <Route path={PATH_DASHBOARD.assignSubject}  element={<AssignSubject/>}/>
                     <Route path={PATH_DASHBOARD.updateRole} element={<UpdateRolePage />} />
                     <Route path={PATH_DASHBOARD.systemLogs} element={<SystemLogsPage />} />
-                    <Route path={PATH_DASHBOARD.admin} element={<AdminPage />} />
+                    <Route path={PATH_DASHBOARD.facultyPage} element={<FacultyPage />} />
                     <Route path={PATH_DASHBOARD.all_result} element={<Results />} />
                 </Route>
 

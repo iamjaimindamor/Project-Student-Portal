@@ -139,7 +139,7 @@ const Results = (props?: any) => {
                         <div className="flex items-center font-semibold">{sub.gradeExam.examYear}</div>
                         <div className="flex items-center font-semibold">
                             {users?.filter((user: any) => user.id == sub.studentId)
-                                .map((user: any, index: any) => { return <span key={index + "result"}>{user.userName}</span> })}
+                                .map((user: any, index: any) => { return <span key={index + "result"}>{user.fullName}</span> })}
                         </div>
                         <div className="flex items-center font-semibold">{sub.e_Subject.subjectName}</div>
                         <div className="flex items-center font-semibold justify-content-center">{sub.marks}</div>

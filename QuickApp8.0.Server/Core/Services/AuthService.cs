@@ -78,7 +78,7 @@ namespace QuickApp8._0.Server.Core.Services
             ApplicationUser defaultUserOne = new ApplicationUser();
             {
                 defaultUserOne.UserName = "Admin";
-                defaultUserOne.FullName = "Inbuilt Admin Account";
+                defaultUserOne.FullName = "Jack McLarren";
                 defaultUserOne.Email = "admin@test.com";
 
             };
@@ -86,7 +86,7 @@ namespace QuickApp8._0.Server.Core.Services
             ApplicationUser defaultUserTwo = new ApplicationUser();
             {
                 defaultUserTwo.UserName = "Faculty";
-                defaultUserTwo.FullName = "Inbuilt Faculty Account";
+                defaultUserTwo.FullName = "Raju Rastogi";
                 defaultUserTwo.Email = "faculty@test.com";
 
             };
@@ -94,7 +94,7 @@ namespace QuickApp8._0.Server.Core.Services
             ApplicationUser defaultUserTwoTwo = new ApplicationUser();
             {
                 defaultUserTwoTwo.UserName = "Faculty2";
-                defaultUserTwoTwo.FullName = "Inbuilt Faculty Account";
+                defaultUserTwoTwo.FullName = "Albert Sen";
                 defaultUserTwoTwo.Email = "faculty2@test.com";
 
             };
@@ -102,7 +102,7 @@ namespace QuickApp8._0.Server.Core.Services
             ApplicationUser defaultUserThree = new ApplicationUser();
             {
                 defaultUserThree.UserName = "Student";
-                defaultUserThree.FullName = "Inbuilt Student Account";
+                defaultUserThree.FullName = "Mahendra Dhoni";
                 defaultUserThree.Email = "student@test.com";
 
             };
@@ -110,7 +110,7 @@ namespace QuickApp8._0.Server.Core.Services
             ApplicationUser defaultUserThreeThree = new ApplicationUser();
             {
                 defaultUserThreeThree.UserName = "Student2";
-                defaultUserThreeThree.FullName = "Inbuilt Student Account";
+                defaultUserThreeThree.FullName = "Richard Parker";
                 defaultUserThreeThree.Email = "student2@test.com";
 
             };
@@ -118,14 +118,14 @@ namespace QuickApp8._0.Server.Core.Services
             ApplicationUser defaultUserFour = new ApplicationUser();
             {
                 defaultUserFour.UserName = "NewUser";
-                defaultUserFour.FullName = "Inbuilt Default Account";
+                defaultUserFour.FullName = "Johb Doe";
                 defaultUserFour.Email = "newuser@test.com";
 
             };
             ApplicationUser defaultUserFourFour = new ApplicationUser();
             {
                 defaultUserFourFour.UserName = "NewUser2";
-                defaultUserFourFour.FullName = "Inbuilt Default Account";
+                defaultUserFourFour.FullName = "Jane Doe";
                 defaultUserFourFour.Email = "newuser2@test.com";
 
             };
