@@ -15,7 +15,7 @@ const PageAccessTemplate = ({role, icon: Icon, color, children}:IProps) => {
         <div>{<Icon className="text-6xl" style={{ color: color }}/>}</div>
           <div className="space-y-2" style={{ color: color }}>
             <h2 className="text-4xl">Welcome to {role} Page</h2>
-            <h2 className="text-md">You must have {role} access to see this page</h2>
+            <h2 className="text-md">You must have {role} Access Role to see this page</h2>
           </div>
       </section>
       <section>{children}</section>

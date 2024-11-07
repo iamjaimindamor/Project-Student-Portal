@@ -25,6 +25,7 @@ const SelectedSubject = (props?: any) => {
         ; (async () => {
             const result = await axiosInstance.get(GET_ALL_SELECTED_SUB);
             setOptedSubject(result.data);
+
         })()
 
     }, [props.updateData, updateData]);
@@ -75,6 +76,7 @@ const SelectedSubject = (props?: any) => {
                             onClick={() => handleDelete(sub.id)}
                             type="button"
                             variant="danger"
+                            disabled={props.lockedIn}
                         />
                     </div>
 

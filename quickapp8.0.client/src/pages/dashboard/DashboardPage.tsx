@@ -1,19 +1,16 @@
 import { BsGlobeAmericas } from "react-icons/bs"
 import PageAccessTemplate from "../../components/dashboard/PageAccessTemplate"
+import useAuth from "../../hooks/useAuth.hooks"
 
 
 const DashboardPage = () => {
+  const {user} = useAuth();
   return (
     <div className="pageTemplate2">
       <PageAccessTemplate color='black' icon={BsGlobeAmericas} role='Dashboard'>
         <div className="text-3xl space-y-2">
-          <h1>Dashboard Access can be either:</h1>
-          <h1>Owner</h1>
-          <h1>Admin</h1>
-          <h1>Manager</h1>
-          <h1>User</h1>
+         {user?.roles.includes("USER")?<> <pre className="mt-20 pt-5 text-danger fw-bold">Your Account Is Yet To Be Approved By The Institute</pre><pre className="text-xl">Please Wait For Approval.If still pending then contact the respective department</pre></>:""}
         </div>
-        <iframe src="https://www.instagram.com/p/CUbHfhpswxt/embed/"></iframe>
       </PageAccessTemplate>
     </div>
   )

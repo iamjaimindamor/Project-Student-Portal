@@ -24,6 +24,7 @@ export interface IAuthUser {
     createdAt: string;
     roles: string[];
     isBlocked : true|false;
+    lockInSubject:true|false;
 }
 
 export interface ILoginResponseDto {

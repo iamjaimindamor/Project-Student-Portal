@@ -14,6 +14,7 @@ export const PATH_DASHBOARD = {
     addExam:'/dashboard/create-exam',
     marksEntry:'/dashboard/marks-entry',
     subjectSelection:'/dashboard/subject-selection',
+    studentProfile:'/dashboard/student-profile',
     newUser: '/dashboard/new-user-request',
     facultyManagement:'/dashboard/faculty-management',
     updateRole: '/dashboard/update-role/:userName',
@@ -24,5 +25,6 @@ export const PATH_DASHBOARD = {
     admin: '/dashboard/admin',
     manager: '/dashboard/manager',
     user: '/dashboard/user',
-    all_result:'/dashboard/all_students_result'
+    all_result:'/dashboard/all_students_result',
+    yourMarks:'/dashboard/marks'
 }

@@ -106,7 +106,7 @@ const Sidebar = () => {
           variant='secondary'
         />
       )}
-      {visibleButtons.adminPage && (
+      {visibleButtons.ownerPage && (
         <Button
           label='Manage Exam'
           onClick={() => handleClick(PATH_DASHBOARD.addExam)}
@@ -114,7 +114,7 @@ const Sidebar = () => {
           variant='secondary'
         />
       )}
-      {visibleButtons.managerPage && (
+      {visibleButtons.ownerPage && (
         <Button
           label="Manage Subjects"
           onClick={() => handleClick(PATH_DASHBOARD.subjectManagement)}
@@ -122,15 +122,31 @@ const Sidebar = () => {
           variant='secondary'
         />
       )}
-      {/* {visibleButtons.studentOnly && ( */}
+      {visibleButtons.studentOnly && (
+      <Button
+        label="Student Profile"
+        onClick={() => handleClick(PATH_DASHBOARD.studentProfile)}
+        type='button'
+        variant='secondary'
+      />
+      )} 
+      {visibleButtons.studentOnly && (
       <Button
         label="Subject Selection"
         onClick={() => handleClick(PATH_DASHBOARD.subjectSelection)}
         type='button'
         variant='secondary'
       />
-      {/* )} */}
-      {visibleButtons.userPage && (
+      )}
+            {visibleButtons.studentOnly && (
+      <Button
+        label="Your Marks"
+        onClick={() => handleClick(PATH_DASHBOARD.yourMarks)}
+        type='button'
+        variant='secondary'
+      />
+      )}  
+      {visibleButtons.ownerPage && (
         <Button
           label='Assign Subjects'
           onClick={() => handleClick(PATH_DASHBOARD.assignSubject)}
@@ -138,7 +154,7 @@ const Sidebar = () => {
           variant='secondary'
         />
       )}
-      {visibleButtons.userPage && (
+      {visibleButtons.adminPage && (
         <Button
           label='Grading Students'
           onClick={() => handleClick(PATH_DASHBOARD.marksEntry)}

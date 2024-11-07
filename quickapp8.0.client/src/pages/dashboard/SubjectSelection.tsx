@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import useAuth from '../../hooks/useAuth.hooks'
 import axiosInstance from '../../utils/axiosInstance';
-import { GET_ALL_SUB, GET_USER_BY_USERNAME, SELECT_A_SUBJECT } from '../../utils/globalConfig';
+import { GET_ALL_SELECTED_SUB, GET_ALL_SUB, GET_USER_BY_USERNAME, LOCK_IN_SUBJECT, SELECT_A_SUBJECT } from '../../utils/globalConfig';
 import { useForm } from 'react-hook-form';
 import Button from '../../components/general/Button';
 import toast from 'react-hot-toast';
@@ -13,6 +13,11 @@ const SubjectSelection = () => {
     const [subjectadded, setSubjectState] = useState<boolean>(false);
     const [subject, setSubject] = useState<[{ subjectID: string, subjectName: string }]>();
     const { register, handleSubmit, formState: { errors }, setValue, reset } = useForm({ mode: "onChange" });
+    const [userId, SetUserID] = useState<any>();
+    const [selectionError, SetSelectionError] = useState<boolean>(false);
+    const [optedsubject, setOptedSubject] = useState<[{ subjectID: string, subjectName: string }]>();
+    const [updateData, SetUpdateState] = useState<boolean>(false);
+    
     useEffect(() => {
 
         ; (async () => {
@@ -36,6 +41,7 @@ const SubjectSelection = () => {
         const currentUser = await axiosInstance.get(GET_USER_BY_USERNAME + "/" + user?.userName);
         if (currentUser) {
             setValue('studentId', currentUser.data.id);
+            SetUserID(currentUser.data.id);
         }
     }
 
@@ -54,6 +60,7 @@ const SubjectSelection = () => {
             await axiosInstance.post(SELECT_A_SUBJECT, formattedData);
             toast.success("Subject Added!");
             setSubjectState(!subjectadded);
+            SetUpdateState(!updateData);
             setLoading(false);
         } catch (error) {
             setLoading(false);
@@ -67,6 +74,32 @@ const SubjectSelection = () => {
         }
 
     }
+
+    const handleSubjectSelectionLocking = async () => {
+
+        var studentSelection:any = optedsubject?.filter((sublist: any) => {
+            return sublist.studentId == userId
+        }).length;
+
+        if(!(studentSelection<2)){
+            await axiosInstance.put(`${LOCK_IN_SUBJECT}?studentId=${userId}&lockingstatus=true`).then(() => {
+                toast.success("Subject Selected And Locked in For the Term!");
+                SetUpdateState(!updateData);
+            }).catch(() => { toast.error("Locking Subject Failed") })
+        }else{
+            toast.error("Minimum 2 subject are required for the term.")
+        }
+    }
+
+    useEffect(() => {
+
+        ; (async () => {
+            const result = await axiosInstance.get(GET_ALL_SELECTED_SUB);
+            setOptedSubject(result.data);
+
+        })()
+
+    }, [updateData]);
 
 
     return (
@@ -96,20 +129,37 @@ const SubjectSelection = () => {
                                 ))}
                             </select>
                             <br />
-                            <Button
-                                label="Select Subject"
-                                type="submit"
-                                variant="secondary"
-                                onClick={() => {
-                                    //                           
-                                }}
-                            />
+                            {user?.lockInSubject ? <pre className='text-danger'><i>Subjects Are Locked In For Term . If Any Query Contact Respective Faculty</i></pre> : <pre><span className='text-danger'>NOTE : </span>Lock In After Selecting Subject. Afterward The Selection Cannot be Change during the term</pre>}
+                            <br />
+                            <div className='d-flex'>
+
+                                <Button
+                                    label="Select Subject"
+                                    type="submit"
+                                    variant="secondary"
+                                    disabled={user?.lockInSubject}
+                                    onClick={() => {
+
+                                    }}
+                                />
+                                &nbsp;&nbsp;
+                                <Button
+                                    label={!user?.lockInSubject ? "Lock-In" : "Locked-In"}
+                                    type="button"
+                                    variant="primary"
+                                    disabled={user?.lockInSubject}
+                                    onClick={() => {
+                                        handleSubjectSelectionLocking();
+                                        SetUpdateState(!updateData);
+                                    }}
+                                />
+                            </div>
                         </form>
                     </div>
                 </div>
                 <div>
                     <h4 className='display-5 bg-white pt-1 pb-1 pl-2'>Your Subject For Current Terms Are : </h4>
-                    <SelectedSubject updateData={subjectadded}/>
+                    <SelectedSubject updateData={subjectadded} lockedIn={user?.lockInSubject}/>
                 </div>
             </div>
         </>

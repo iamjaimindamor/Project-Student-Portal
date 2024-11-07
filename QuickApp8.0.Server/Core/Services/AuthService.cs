@@ -11,6 +11,7 @@ using QuickApp8._0.Server.Core.Dtos.Auth;
 using QuickApp8._0.Server.Core.Dtos.Genral;
 using QuickApp8._0.Server.Core.Entities;
 using QuickApp8._0.Server.Core.Interfaces;
+using QuickApp8._0.Server.Migrations;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -502,6 +503,7 @@ namespace QuickApp8._0.Server.Core.Services
                 CreatedAt = user.CreatedAt,
                 Roles = Roles,
                 IsBlocked = user.IsBlocked,
+                LockInSubject = user.LockInSubject
             };
         }
 

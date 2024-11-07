@@ -11,5 +11,6 @@ namespace QuickApp8._0.Server.Core.Entities
         [NotMapped]
         public IList<string> Roles { get; set; }
         public bool IsBlocked { get; internal set; }
+        public bool LockInSubject { get; set; }
     }
 }

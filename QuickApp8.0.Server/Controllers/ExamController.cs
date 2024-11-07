@@ -186,6 +186,19 @@ namespace QuickApp8._0.Server.Controllers
 
         }
 
+        [HttpPut("/lock-unlock-subject-select")]
+        public async Task<IActionResult> LockingSubjectSelection(string studentId , bool lockingstatus)
+        {
+            var result = await examService.LockInUnlockSubject(studentId, lockingstatus);
+
+            if (result)
+            {
+                return Ok($"Locking State is to {lockingstatus} Successfully");
+            }
+
+            return BadRequest("Update Locking State Failed");
+        }
+
 
     }
 }

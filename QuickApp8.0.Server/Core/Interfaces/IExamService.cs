@@ -11,6 +11,7 @@ namespace QuickApp8._0.Server.Core.Interfaces
         bool DeleteExam(Guid examID);
         IList<AssignedSubject> GetAssignedSubjects();
         Task<AssignedSubject> AssignSubject(AssignedSubject assignSubject);
+        Task<bool> LockInUnlockSubject(string studentId , bool lockingstatus);
         bool DeleteAssignedSubject(string facultyID);
         IList<Subject> GetSubjects();
         Task<Subject> CreateSubject(Subject subject);

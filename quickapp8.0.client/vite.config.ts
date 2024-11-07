@@ -117,6 +117,10 @@ export default defineConfig({
             '^/update-exam-state':{
                 target,
                 secure: false
+            },
+            '/lock-unlock-subject-select':{
+                target,
+                secure: false
             }
 
         },

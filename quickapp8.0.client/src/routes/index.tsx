@@ -14,7 +14,7 @@ import NotFoundPage from "../pages/public/NotFoundPage";
 import SystemLogsPage from "../pages/dashboard/SystemLogsPage";
 import UsersManagementPage from "../pages/dashboard/UsersManagementPage";
 import UpdateRolePage from "../pages/dashboard/UpdateRolePage";
-import ManagerPage from "../pages/dashboard/ManagerPage";
+import ManagerPage from "../pages/dashboard/StudentPage";
 import OwnerPage from "../pages/dashboard/OwnerPage";
 import AddSubject from "../pages/dashboard/AddSubject";
 import AssignSubject from "../pages/dashboard/AssignSubject";
@@ -22,6 +22,7 @@ import AddExam from "../pages/dashboard/AddExam";
 import Grading from "../pages/dashboard/Grading";
 import SubjectSelection from "../pages/dashboard/SubjectSelection";
 import Results from "../pages/dashboard/Results";
+import StudentGrade from "../pages/dashboard/StudentGrade";
 // import facultypage from "../pages/dashboard"
 
 const GlobalRouter = () => {
@@ -49,7 +50,8 @@ const GlobalRouter = () => {
                     <Route path={PATH_DASHBOARD.usersManagement}  element={<UsersManagementPage sendpath="Student"/>}/>
                     <Route path={PATH_DASHBOARD.subjectSelection}  element={<SubjectSelection/>}/>
                     <Route path={PATH_DASHBOARD.facultyManagement}  element={<UsersManagementPage sendpath="Faculty"/>}/>
-                    <Route path={PATH_DASHBOARD.manager} element={<ManagerPage/>}/>
+                    <Route path={PATH_DASHBOARD.studentProfile} element={<ManagerPage/>}/>
+                    <Route path={PATH_DASHBOARD.yourMarks} element={<StudentGrade/>}/>
                 </Route>
 
                 <Route element={<AuthGuard roles={adminAccessRoles} />}>

@@ -9,5 +9,6 @@
         public DateTime CreatedAt { get; set; }
         public IEnumerable<string> Roles { get; set; }
         public bool IsBlocked { get; set; }
+        public bool LockInSubject { get; set; }
     }
 }

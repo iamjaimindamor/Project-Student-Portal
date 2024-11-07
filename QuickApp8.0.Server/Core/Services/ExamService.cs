@@ -132,6 +132,23 @@ namespace QuickApp8._0.Server.Core.Services
             return applicationDbContext.subjects.ToList();
         }
 
+        public async Task<bool> LockInUnlockSubject(string studentID , bool lockingstatus)
+        {
+            var isStudent = await applicationDbContext.Users.FindAsync(studentID);
+
+            if(isStudent != null)
+            {
+                isStudent.LockInSubject = lockingstatus;
+                applicationDbContext.Update(isStudent);
+                await applicationDbContext.SaveChangesAsync();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public async Task<OptedSubjectByStudents> OptingSubject(OptedSubjectByStudents optingSubject)
         {
             applicationDbContext.SubbyStudents.Update(optingSubject);
