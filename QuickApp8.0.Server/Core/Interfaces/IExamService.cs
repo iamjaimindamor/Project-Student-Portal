@@ -7,6 +7,7 @@ namespace QuickApp8._0.Server.Core.Interfaces
     {
         IList<Exam> GetExamList();
         Task<Exam> CreateExam(Exam exam);
+        Task<(bool,Exam)> UpdateExamStatus(Guid ExamId,Exam updatedState);
         bool DeleteExam(Guid examID);
         IList<AssignedSubject> GetAssignedSubjects();
         Task<AssignedSubject> AssignSubject(AssignedSubject assignSubject);

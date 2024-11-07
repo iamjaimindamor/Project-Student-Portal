@@ -139,6 +139,25 @@ namespace QuickApp8._0.Server.Core.Services
             return optingSubject;
         }
 
+        public async Task<(bool, Exam)> UpdateExamStatus(Guid ExamId, Exam UpdateExamState)
+        {
+            var isExamDefined = await applicationDbContext.exams.FindAsync(ExamId);
+
+            if (isExamDefined != null)
+            {
+                isExamDefined.ExamStatus = UpdateExamState.ExamStatus;
+                applicationDbContext.exams.Update(isExamDefined);
+                await applicationDbContext.SaveChangesAsync();
+                return (true, isExamDefined);
+            }
+            else
+            {
+                return (false, UpdateExamState);
+            }
+
+
+        }
+
         async Task<Exam> IExamService.CreateExam(Exam exam)
         {
             await applicationDbContext.exams.AddAsync(exam);

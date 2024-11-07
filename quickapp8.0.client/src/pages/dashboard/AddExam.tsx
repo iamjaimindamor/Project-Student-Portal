@@ -5,15 +5,13 @@ import toast from 'react-hot-toast';
 import Button from '../../components/general/Button';
 import { ADD_EXAM } from '../../utils/globalConfig';
 import ExamManagement from '../../components/exam-management/ExamManagement';
+export const STATUS_ENUMS = {
+    INITIALIZING: 'INITIALIZING',
+    ONGOING: 'ONGOING',
+    ENDED: 'ENDED',
+};
 
 const AddExam = () => {
-
-    const STATUS_ENUMS = {
-        INITIALIZING: 'INITIALIZING',
-        ONGOING: 'ONGOING',
-        ENDED: 'ENDED',
-    };
-
 
     const [loading, setLoading] = useState<boolean>(false);
     const [subjectadded, setSubjectState] = useState<boolean>(false);
@@ -55,7 +53,7 @@ const AddExam = () => {
     }, []);
 
     return (
-        <div className='p-4 w-2/4 mx-auto flex flex-col gap-4'>
+        <div className='p-4 mx-auto flex flex-col gap-4'>
             <div className='bg-white p-2 rounded-md flex flex-col gap-4'>
                 <h1 className='text-2xl font-bold'>Create Exam For Current Term/Semester</h1>
                 <p className="font-bold text-danger">Admin Function Only</p>

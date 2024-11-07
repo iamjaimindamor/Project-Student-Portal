@@ -113,6 +113,10 @@ export default defineConfig({
             '^/opt-subject':{
                 target,
                 secure: false
+            },
+            '^/update-exam-state':{
+                target,
+                secure: false
             }
 
         },

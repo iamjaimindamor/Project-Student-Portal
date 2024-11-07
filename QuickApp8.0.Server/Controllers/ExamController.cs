@@ -95,17 +95,17 @@ namespace QuickApp8._0.Server.Controllers
         public async Task<IActionResult> GradingStudents(GradeHistory grades)
         {
             var result = await examService.CreateGradeHistory(grades);
-            return Ok(result);  
+            return Ok(result);
         }
 
         [HttpDelete("/remove-assigned-subject")]
         public IActionResult RemoveAssignedSubject(string facultyID)
         {
-           var result = examService.DeleteAssignedSubject(facultyID);
+            var result = examService.DeleteAssignedSubject(facultyID);
 
             if (result)
             {
-                return Ok("Deleted Successfully"+ facultyID + "Assigned Subject");
+                return Ok("Deleted Successfully" + facultyID + "Assigned Subject");
             }
             else
             {
@@ -170,7 +170,22 @@ namespace QuickApp8._0.Server.Controllers
                 return Ok("Opted Selection Not Found");
             }
         }
-        
+
+        [HttpPut("/update-exam-state")]
+        public async Task<IActionResult> UpdateExamState(Guid ExamId, Exam UpdatedExamState)
+        {
+            var result = await examService.UpdateExamStatus(ExamId, UpdatedExamState);
+            if (result.Item1)
+            {
+                return Ok(result.Item2);
+            }
+            else
+            {
+                return BadRequest("Failed To Update Exam Status");
+            }
+
+        }
+
 
     }
 }

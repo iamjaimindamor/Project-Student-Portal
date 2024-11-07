@@ -31,6 +31,7 @@ export const DELETE_RESULT_INFO = 'delete-grade-history';
 export const GET_ALL_SELECTED_SUB = 'all-students-opted-subject';
 export const DELETED_SELECTED_SUB = 'delete-opted-subject';
 export const SELECT_A_SUBJECT = 'opt-subject';
+export const UPDATE_EXAM_STATE = 'update-exam-state';
 
 
 // Auth Routes
